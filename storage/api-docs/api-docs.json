@@ -1,0 +1,1078 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "DEPOT API",
+        "contact": {
+            "name": "oussema khlifi",
+            "email": "khoussemaa@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/depots/all": {
+            "get": {
+                "tags": [
+                    "Depots"
+                ],
+                "summary": "Return the list of depots",
+                "operationId": "6296d212bb45500fc483296f17b966c5",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/DepotSchema"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DepotSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/depots/create": {
+            "post": {
+                "tags": [
+                    "Depots"
+                ],
+                "summary": "Depot Create",
+                "operationId": "cae79e0c87e7291556cc6306d6c2924a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "xxx"
+                                ],
+                                "properties": {
+                                    "location": {
+                                        "type": "string"
+                                    },
+                                    "size": {
+                                        "type": "string"
+                                    },
+                                    "capacity": {
+                                        "type": "integer"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "isRented": {
+                                        "type": "boolean"
+                                    },
+                                    "rent": {
+                                        "type": "float"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DepotSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/depots/depot/{id}": {
+            "get": {
+                "tags": [
+                    "Depots"
+                ],
+                "summary": "Depot Show",
+                "operationId": "c2dc9afaff5f99bf2b18623d10be9789",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DepotSchema"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DepotSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/depots/update/{id}": {
+            "put": {
+                "tags": [
+                    "Depots"
+                ],
+                "summary": "Depot update",
+                "operationId": "b2ebd4b33613925a47e7790245dd98b9",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/id"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "location": {
+                                        "type": "string"
+                                    },
+                                    "size": {
+                                        "type": "string"
+                                    },
+                                    "capacity": {
+                                        "type": "integer"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "isRented": {
+                                        "type": "boolean"
+                                    },
+                                    "rent": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DepotSchema"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/depots/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Depots"
+                ],
+                "summary": "Depot Delete",
+                "operationId": "ba348ee72e03f27c06ca3d577fb812cf",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/id"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/invoices/all": {
+            "get": {
+                "tags": [
+                    "Invoices"
+                ],
+                "summary": "Return list of invoices",
+                "operationId": "0afc80972bf32f7714691a31f61f610d",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/InvoiceSchema"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/invoices/create": {
+            "post": {
+                "tags": [
+                    "Invoices"
+                ],
+                "summary": "Invoice store",
+                "operationId": "dc2751d6fb8093996c56026541116ca6",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "product_id": {
+                                        "type": "integer"
+                                    },
+                                    "provider_id": {
+                                        "type": "integer"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "quantity": {
+                                        "type": "integer"
+                                    },
+                                    "recivedat": {
+                                        "type": "date"
+                                    },
+                                    "price": {
+                                        "type": "decimal"
+                                    },
+                                    "discount": {
+                                        "type": "decimal"
+                                    },
+                                    "total": {
+                                        "type": "decimal"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InvoiceSchema"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/invoices/invoice/{id}": {
+            "get": {
+                "tags": [
+                    "Invoices"
+                ],
+                "summary": "Invoice show",
+                "operationId": "26e17861dded81979a1dc84c847d34ae",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InvoiceSchema"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/invoices/update/{id}": {
+            "put": {
+                "tags": [
+                    "Invoices"
+                ],
+                "summary": "Invoice update",
+                "operationId": "4c34e85e186246cac33ad55ad23d42ba",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/id"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "product_id": {
+                                        "type": "integer"
+                                    },
+                                    "provider_id": {
+                                        "type": "integer"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "quantity": {
+                                        "type": "integer"
+                                    },
+                                    "recivedat": {
+                                        "type": "date"
+                                    },
+                                    "price": {
+                                        "type": "decimal"
+                                    },
+                                    "discount": {
+                                        "type": "decimal"
+                                    },
+                                    "total": {
+                                        "type": "decimal"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InvoiceSchema"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/invoices/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Invoices"
+                ],
+                "summary": "Invoice delete",
+                "operationId": "0333d40fe2c17f5a6959e8e574e01576",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/products/all": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Return all products",
+                "operationId": "af88e80bb294939c1fc7e0231fba5ae0",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/ProductSchema"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/products/create": {
+            "post": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Product store",
+                "operationId": "5b4712b82366a108a816402b5d526fa5",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "size": {
+                                        "type": "string"
+                                    },
+                                    "weight": {
+                                        "type": "decimal"
+                                    },
+                                    "cost": {
+                                        "type": "decimal"
+                                    },
+                                    "quantity": {
+                                        "type": "decimal"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "expiredat": {
+                                        "type": "date"
+                                    },
+                                    "depot_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProductSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/products/product/{id}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Product show",
+                "operationId": "57682f8a28d1c6b5e97b0d424134ede8",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProductSchema"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/products/update/{id}": {
+            "put": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Product update",
+                "operationId": "615bba49c084f6fc97e568daccec4639",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/id"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "size": {
+                                        "type": "string"
+                                    },
+                                    "weight": {
+                                        "type": "decimal"
+                                    },
+                                    "cost": {
+                                        "type": "decimal"
+                                    },
+                                    "quantity": {
+                                        "type": "decimal"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "expiredat": {
+                                        "type": "date"
+                                    },
+                                    "depot_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProductSchema"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/products/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Summary",
+                "operationId": "7efd851d8c2a224ae3945e8be4ef1691",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/providers/all": {
+            "get": {
+                "tags": [
+                    "Providers"
+                ],
+                "summary": "Return list of providers",
+                "operationId": "b5bc66ffd8c3962084ba705e324da25f",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/ProviderSchema"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/providers/create": {
+            "post": {
+                "tags": [
+                    "Providers"
+                ],
+                "summary": "Provider store",
+                "operationId": "6e0b2446ef80f434923d0a13793f2bff",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "fax": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "mat": {
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "type": "string"
+                                    },
+                                    "country": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProviderSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/providers/provider/{id}": {
+            "get": {
+                "tags": [
+                    "Providers"
+                ],
+                "summary": "Provider show",
+                "operationId": "d5e62b16fe80462f9e86c038cca7fb52",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProviderSchema"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/providers/update/{id}": {
+            "put": {
+                "tags": [
+                    "Providers"
+                ],
+                "summary": "Provider update",
+                "operationId": "ac8f3d6b1c8f482739d1043ebce53e11",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/id"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "fax": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "mat": {
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "type": "string"
+                                    },
+                                    "country": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProviderSchema"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/providers/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Providers"
+                ],
+                "summary": "Provider delete",
+                "operationId": "06f398398e29649226a9f3c6e5c1cb3b",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "DepotSchema": {
+                "title": "Depot Model",
+                "description": "Depot Model",
+                "properties": {
+                    "id": {
+                        "description": "depot primary key",
+                        "type": "uint64",
+                        "example": "1"
+                    },
+                    "location": {
+                        "description": "depot location (country, city, address)",
+                        "type": "string",
+                        "example": "tunis, sfax route tanyour km6"
+                    },
+                    "size": {
+                        "description": "depot size",
+                        "type": "string",
+                        "example": "120x40m²"
+                    },
+                    "capacity": {
+                        "description": "depot capacity of storing",
+                        "type": "integer",
+                        "example": "500"
+                    },
+                    "type": {
+                        "description": "depot products stored type",
+                        "type": "string",
+                        "example": "food"
+                    },
+                    "isRented": {
+                        "description": "depot rented verifier",
+                        "type": "boolean",
+                        "example": "1"
+                    },
+                    "rent": {
+                        "description": "depot renting cost",
+                        "type": "float",
+                        "example": "1520.47"
+                    }
+                },
+                "type": "object"
+            },
+            "InvoiceSchema": {
+                "title": "Invoice Model",
+                "description": "Invoice Model",
+                "properties": {
+                    "product_id": {
+                        "description": "product id",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "provider_id": {
+                        "description": "provider id",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "status": {
+                        "description": "invoice status",
+                        "type": "string",
+                        "example": "pending"
+                    },
+                    "quantity": {
+                        "description": "product quantity",
+                        "type": "integer",
+                        "example": "10"
+                    },
+                    "recivedat": {
+                        "description": "product delivery date",
+                        "type": "date",
+                        "example": "2021/08/11 11:045:20"
+                    },
+                    "price": {
+                        "description": "product price",
+                        "type": "decimal",
+                        "example": "455.2"
+                    },
+                    "discount": {
+                        "description": "product discount",
+                        "type": "decimal",
+                        "example": "1500"
+                    },
+                    "total": {
+                        "description": "invoice total",
+                        "type": "decimal",
+                        "example": "1500.57"
+                    }
+                },
+                "type": "object"
+            },
+            "ProductSchema": {
+                "title": "Product Model",
+                "description": "Product Model",
+                "properties": {
+                    "name": {
+                        "description": "product name",
+                        "type": "string",
+                        "example": "samasung A20"
+                    },
+                    "size": {
+                        "description": "product size",
+                        "type": "string",
+                        "example": "20x40mm"
+                    },
+                    "weight": {
+                        "description": "product weight",
+                        "type": "decimal",
+                        "example": "54g"
+                    },
+                    "cost": {
+                        "description": "product cost",
+                        "type": "decimal",
+                        "example": "220"
+                    },
+                    "quantity": {
+                        "description": "product quantity",
+                        "type": "integer",
+                        "example": "25"
+                    },
+                    "type": {
+                        "description": "product type",
+                        "type": "string",
+                        "example": "smartphone"
+                    },
+                    "expiredat": {
+                        "description": "product expiration date",
+                        "type": "date",
+                        "example": "2021/04/11"
+                    },
+                    "depot_id": {
+                        "description": "product depot",
+                        "type": "integer",
+                        "example": "2"
+                    }
+                },
+                "type": "object"
+            },
+            "ProviderSchema": {
+                "title": "Provider Model",
+                "description": "Provider Model",
+                "properties": {
+                    "name": {
+                        "description": "provider name",
+                        "type": "string",
+                        "example": "samsung corp"
+                    },
+                    "email": {
+                        "description": "provider email",
+                        "type": "string",
+                        "example": "contact@samsung.com"
+                    },
+                    "fax": {
+                        "description": "provider fax",
+                        "type": "string",
+                        "example": "+216 74 523 658"
+                    },
+                    "phone": {
+                        "description": "provider phone",
+                        "type": "string",
+                        "example": "+216 55 574 426"
+                    },
+                    "mat": {
+                        "description": "provider registration number",
+                        "type": "string",
+                        "example": "Az258xfvbz"
+                    },
+                    "address": {
+                        "description": "provider location",
+                        "type": "string",
+                        "example": "Sfax, route gremda km2"
+                    },
+                    "country": {
+                        "description": "provider country",
+                        "type": "string",
+                        "example": "tunisia"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "parameters": {
+            "id": {
+                "name": "id",
+                "in": "query",
+                "description": "depot id",
+                "schema": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}
